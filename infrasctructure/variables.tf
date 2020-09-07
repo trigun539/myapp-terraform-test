@@ -28,7 +28,7 @@ variable "fargate_memory" {
   default = 512
 }
 
-variable "appname" {
+variable "name" {
   type    = string
   default = "myapp"
 }

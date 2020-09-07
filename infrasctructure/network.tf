@@ -10,7 +10,7 @@ resource "aws_vpc" "this" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = join("-", [var.appname, "vpc"])
+    Name = "${var.name}-vpc"
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "this" {
   provider = aws.region-master
   vpc_id   = aws_vpc.this.id
   tags = {
-    Name = join("-", [var.appname, "igw"])
+    Name = "${var.name}-igw"
   }
 }
 
@@ -45,7 +45,7 @@ resource "aws_subnet" "subnet_1" {
   vpc_id            = aws_vpc.this.id
   cidr_block        = "10.15.1.0/24"
   tags = {
-    Name = join("-", [var.appname, "vpc-subnect-1"])
+    Name = "${var.name}-subnet-1"
   }
 }
 
@@ -56,7 +56,7 @@ resource "aws_subnet" "subnet_2" {
   vpc_id            = aws_vpc.this.id
   cidr_block        = "10.15.2.0/24"
   tags = {
-    Name = join("-", [var.appname, "vpc-subnect-2"])
+    Name = "${var.name}-subnet-2"
   }
 }
 
@@ -76,7 +76,7 @@ resource "aws_route_table" "this" {
     ignore_changes = all
   }
   tags = {
-    Name = join("-", [var.appname, "rt"])
+    Name = "${var.name}-rt"
   }
 }
 

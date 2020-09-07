@@ -5,7 +5,7 @@
 # Create SG for only TCP/80, TCP/443 and outbound access
 resource "aws_security_group" "this" {
   provider    = aws.region-master
-  name        = join("-", [var.appname, "sg"])
+  name        = "${var.name}-sg"
   description = "Allow ${var.app_port} traffic to VPC"
   vpc_id      = aws_vpc.this.id
   egress {

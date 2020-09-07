@@ -5,5 +5,5 @@
 # Creates ECS Cluster
 resource "aws_ecs_cluster" "this" {
   provider = aws.region-master
-  name     = join("-", [var.appname, "cluster"])
+  name     = "${var.name}-cluster"
 }

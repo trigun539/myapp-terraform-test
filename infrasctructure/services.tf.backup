@@ -18,15 +18,7 @@ resource "aws_ecs_service" "this" {
     assign_public_ip = true
   }
 
-  load_balancer {
-    target_group_arn = aws_alb_target_group.this.arn
-    container_name   = "${var.name}-task"
-    container_port   = var.app_port
-  }
-
   lifecycle {
     ignore_changes = [task_definition, desired_count]
   }
-
-  depends_on = [aws_alb_target_group.this]
 }

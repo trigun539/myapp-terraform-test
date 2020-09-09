@@ -10,7 +10,17 @@ variable "region" {
 
 variable "vpc_cidr" {
   type    = string
-  default = "10.15.0.0/16"
+  default = "10.15.0.0/24"
+}
+
+variable "private_subnets" {
+  type    = list(string)
+  default = ["10.15.0.0/27", "10.15.0.32/27"]
+}
+
+variable "public_subnets" {
+  type    = list(string)
+  default = ["10.15.0.64/27", "10.15.0.96/27"]
 }
 
 variable "launch_type" {

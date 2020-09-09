@@ -9,7 +9,7 @@ resource "aws_lb" "this" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.this.id]
-  subnets            = [aws_subnet.subnet_1.id, aws_subnet.subnet_2.id]
+  subnets            = aws_subnet.public.*.id
   tags = {
     Name = "${var.name}-lb"
   }
